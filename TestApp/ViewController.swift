@@ -16,54 +16,41 @@ import Foundation
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var facebookTocken: String!
-    var serverID: String = ""
+    var serverID: String!
     var facebookID: String!
     var someString: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loginButton = FBSDKLoginButton()
-        view.addSubview(loginButton)
-        loginButton.frame = CGRect(x: 16, y: view.frame.height - 100, width: view.frame.width - 32, height:  50)
-        loginButton.delegate = self
+        createFacebookLoginButton()
      
-        if let token = FBSDKAccessToken.current() {
-            print("Loged in with existing account")
-            facebookTocken = token.tokenString
+        if FBSDKAccessToken.current() != nil {
+            facebookTocken = FBSDKAccessToken.current().tokenString
+            facebookGraphRequest()
             
-            let viewController = ContactsViewController()
-            self.present(viewController, animated: true, completion: nil)
         } else {
             print("Log in failed, create new account")
         }
         
-        FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email"]).start(completionHandler: { (connection, result, error) -> Void in
-            if (error == nil){
-                let fbDetails = result as! NSDictionary
-                print(fbDetails)
-//                self.facebookID = fbDetails.value(forKey: "id") as? String
-//                let userLastName = fbDetails.value(forKey: "last_name") as! String
-//                let userFirstName = fbDetails.value(forKey: "first_name") as! String
-//                
-//                self.facebookVarivicationRequest(firstName: userFirstName, lastName: userLastName, token: self.facebookTocken, id: self.facebookID!)
-//                print("serverID is the: ", self.serverID)
-//                
-//                // self.sendVierficationRequest(userID: self.serverID, phoneNumber: self.phoneNumber)
-//                //  self.request3()
-                
-            } else {
-                print(error?.localizedDescription ?? "Not found")
-            }
-        })
     }
     
+    func createFacebookLoginButton() {
+        let loginButton = FBSDKLoginButton()
+        view.addSubview(loginButton)
+        loginButton.frame = CGRect(x: 16, y: view.frame.height - 100, width: view.frame.width - 32, height:  50)
+        loginButton.delegate = self
+    }
     
+    func logInExistingAsUser() {
+        print("Loged in with existing account")
+        facebookTocken = FBSDKAccessToken.current().tokenString
+        let viewController = ContactsViewController()
+        self.present(viewController, animated: true, completion: nil)
+    }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        
         self.viewDidLoad()
-        
         print("didCompleteWith")
     }
 
@@ -76,9 +63,9 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         return true
     }
     
-    func facebookVarivicationRequest(firstName: String,lastName: String, token: String, id: String) {
+    func facebookVarivicationRequest(firstName: String,lastName: String, token: String, fbID: String) {
         let parameters: Parameters = [
-            "facebookId": id,
+            "facebookId": fbID,
             "facebookToken": token,
             "firstName": firstName,
             "lastName": lastName,
@@ -91,26 +78,38 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                     let json = response.result.value as! NSDictionary
                     let data = json.value(forKey: "data") as! NSDictionary
                     let mainData = data.value(forKey: "user") as! NSDictionary
-                    let firstName = mainData.value(forKey: "firstName") as! String
-                    let lastName = mainData.value(forKey: "lastName") as! String
-                    let serverId = mainData.value(forKey: "serverId") as! String
+                    let facebookID = mainData.value(forKey: "serverId") as! String
                     
                     let viewController = PhonNumberViewController()
-                    viewController.userID = serverId
+                    viewController.facebookID = facebookID
                     
-                    //                    self.present(viewController, animated: true, completion: nil)
-                    //  self.sendVierficationRequest(userID: serverId, phoneNumber: self.phoneNumber)
-                    
-                    print("json keys are: ",json.allKeys)
-                    
-                    print("true")
+                    self.present(viewController, animated: true, completion: nil)
                 } else {
                     print("false")
                 }
         }
     }
     
+    func facebookGraphRequest() {
+        FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email"]).start(completionHandler: { (connection, result, error) -> Void in
+            if (error == nil){
+                
+                let fbDetails = result as! NSDictionary
+                let facebookID = fbDetails.value(forKey: "id") as? String
+                let userLastName = fbDetails.value(forKey: "last_name") as! String
+                let userFirstName = fbDetails.value(forKey: "first_name") as! String
+
+                self.facebookVarivicationRequest(firstName: userFirstName, lastName: userLastName, token: self.facebookTocken, fbID: facebookID!)
+            } else {
+                print(error?.localizedDescription ?? "Not found")
+            }
+        })
+
+    }
+    
 }
+
+
 
     
     

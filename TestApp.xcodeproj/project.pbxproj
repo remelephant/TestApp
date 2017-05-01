@@ -58,6 +58,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		832CCEFC1EB6B0BC00B17F01 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				83EA3DE81EB3BB2900442E03 /* AppDelegate.swift */,
+				83EA3DEC1EB3BB2900442E03 /* Main.storyboard */,
+				83EA3DEF1EB3BB2900442E03 /* Assets.xcassets */,
+				83864BDD1EB3C481002C1282 /* TestApp.entitlements */,
+				83EA3DF41EB3BB2900442E03 /* Info.plist */,
+				832CCEFA1EB69B3700B17F01 /* Launch Screen.storyboard */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
 		83EA3DDC1EB3BB2900442E03 = {
 			isa = PBXGroup;
 			children = (
@@ -79,17 +92,12 @@
 		83EA3DE71EB3BB2900442E03 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
-				83EA3DE81EB3BB2900442E03 /* AppDelegate.swift */,
 				83EA3DEA1EB3BB2900442E03 /* ViewController.swift */,
 				83514CCD1EB5FA1D00825ED3 /* PhonNumberViewController.swift */,
-				83514CD31EB64D0400825ED3 /* ContactsViewController.swift */,
 				83514CCF1EB5FA4000825ED3 /* ActivationCodeViewController.swift */,
+				83514CD31EB64D0400825ED3 /* ContactsViewController.swift */,
 				83514CD11EB6118600825ED3 /* ProfileViewController.swift */,
-				83EA3DEC1EB3BB2900442E03 /* Main.storyboard */,
-				83EA3DEF1EB3BB2900442E03 /* Assets.xcassets */,
-				83864BDD1EB3C481002C1282 /* TestApp.entitlements */,
-				83EA3DF41EB3BB2900442E03 /* Info.plist */,
-				832CCEFA1EB69B3700B17F01 /* Launch Screen.storyboard */,
+				832CCEFC1EB6B0BC00B17F01 /* Support */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";

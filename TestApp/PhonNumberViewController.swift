@@ -11,51 +11,47 @@ import Alamofire
 
 class PhonNumberViewController: UIViewController {
 
-    var phoneNumber: String = ""
-    var userID: String = ""
+//    var phoneNumber: String = ""
+    var facebookID: String = ""
     var myTextField: UITextField = UITextField()
+    let validNumbers = ["91","99", "96", "43", "55", "95", "41", "44", "93", "94", "77", "98", "49"]
+    let localCode = "+374"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
-        createPhoneLabel()
+        createPhoneNumberLabel()
         createPhoneNumberTextfield()
         createVerifyButton()
-        
     }
     
-    func createPhoneLabel()
-    {
+    func createPhoneNumberLabel() {
         let label = UILabel(frame: CGRect(x: 30, y: 50, width: view.frame.width - 60, height: 50))
         label.textAlignment = .left
         label.text = "Phone Number:"
         self.view.addSubview(label)
     }
     
-    func createPhoneNumberTextfield()
-    {
+    func createPhoneNumberTextfield() {
         myTextField = UITextField(frame: CGRect(x: 40, y: 100, width: view.frame.width - 80, height: 50));
-        myTextField.placeholder = "Add phone Number"
-       // myTextField.borderStyle = UITextBorderStyle.line
+        myTextField.placeholder = "Add Verification Code"
         myTextField.backgroundColor = UIColor.white
         myTextField.textColor = UIColor.blue
-        myTextField.keyboardType = UIKeyboardType.namePhonePad
-        
+        myTextField.keyboardType = UIKeyboardType.numberPad
         self.view.addSubview(myTextField)
     }
     
-    func createVerifyButton()
-    {
+    func createVerifyButton() {
         let verifyButton = UIButton()
         verifyButton.frame = CGRect(x: 30, y: 170, width: view.frame.width - 60, height: 50)
         verifyButton.backgroundColor = UIColor.gray
         verifyButton.titleLabel?.textColor = UIColor.white
         verifyButton.layer.cornerRadius = 5
         verifyButton.setTitle("Send Verification Code ", for: .normal)
-        verifyButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        verifyButton.addTarget(self, action: #selector(sendPhoneNumber), for: .touchUpInside)
         //view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
         self.view.addSubview(verifyButton)
     }
 
@@ -64,35 +60,40 @@ class PhonNumberViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func buttonAction(sender: UIButton!) {
-        sendVierficationRequest(userID: userID, phoneNumber: myTextField.text!)
+    func sendPhoneNumber(sender: UIButton!) {
+        let phoneNumber = myTextField.text
+        let valid = isNumberValid(number: phoneNumber!)
+        if valid {
+            let fullNumber = "\(localCode)\(phoneNumber!)"
+            requestVerificationCode(fbID: facebookID, phoneNumber: fullNumber)
+        } else {
+            //Popup or button is not active
+            print("The number is not vaild")
+        }
     }
     
+    func isNumberValid(number: String) -> Bool {
+        let prefix = String(number.characters.prefix(2))
+        
+        if !validNumbers.contains(prefix) { return false }
+        if number.characters.count != 8 { return false }
+        return true
+    }
 
-    func sendVierficationRequest(userID: String, phoneNumber: String)
-    {
-        // 59048585a82c6f7b2b121208
+    func requestVerificationCode(fbID: String, phoneNumber: String) {
         let parameters: Parameters = [
-            "userId": userID,
+            "userId": fbID,
             "phoneNumber": phoneNumber,
-            
             ]
         
         Alamofire.request("http://sample-env-2.w6em3jmvdb.us-west-2.elasticbeanstalk.com/user/sendcode", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
             .responseJSON {response in debugPrint(response)
                 
                 if response.result.value != nil {
-                    //                    let json = try JSONSerialization.jsonObject(with: response.data, options: [])
-                    //                    print("json", json)
-                    
-                    print("22222222222222222222222222",response)
                     let viewController = ActivationCodeViewController()
-                    viewController.userID = self.userID
-                    
+                    viewController.facebookID = self.facebookID
                     self.present(viewController, animated: true, completion: nil)
-                   // self.request3()
                 }
-                //                print(response)
         }
     }
 
