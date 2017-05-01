@@ -11,8 +11,7 @@
 		832CCEFB1EB69B3700B17F01 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 832CCEFA1EB69B3700B17F01 /* Launch Screen.storyboard */; };
 		83514CCE1EB5FA1D00825ED3 /* PhonNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83514CCD1EB5FA1D00825ED3 /* PhonNumberViewController.swift */; };
 		83514CD01EB5FA4000825ED3 /* ActivationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83514CCF1EB5FA4000825ED3 /* ActivationCodeViewController.swift */; };
-		83514CD21EB6118600825ED3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83514CD11EB6118600825ED3 /* ProfileViewController.swift */; };
-		83514CD41EB64D0400825ED3 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83514CD31EB64D0400825ED3 /* ContactsViewController.swift */; };
+		83514CD41EB64D0400825ED3 /* ContactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83514CD31EB64D0400825ED3 /* ContactsListViewController.swift */; };
 		83EA3DE91EB3BB2900442E03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA3DE81EB3BB2900442E03 /* AppDelegate.swift */; };
 		83EA3DEB1EB3BB2900442E03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA3DEA1EB3BB2900442E03 /* ViewController.swift */; };
 		83EA3DEE1EB3BB2900442E03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EA3DEC1EB3BB2900442E03 /* Main.storyboard */; };
@@ -25,8 +24,7 @@
 		832CCEFA1EB69B3700B17F01 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		83514CCD1EB5FA1D00825ED3 /* PhonNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonNumberViewController.swift; sourceTree = "<group>"; };
 		83514CCF1EB5FA4000825ED3 /* ActivationCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationCodeViewController.swift; sourceTree = "<group>"; };
-		83514CD11EB6118600825ED3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		83514CD31EB64D0400825ED3 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		83514CD31EB64D0400825ED3 /* ContactsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListViewController.swift; sourceTree = "<group>"; };
 		83864BDD1EB3C481002C1282 /* TestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestApp.entitlements; sourceTree = "<group>"; };
 		83EA3DE51EB3BB2900442E03 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EA3DE81EB3BB2900442E03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,8 +93,7 @@
 				83EA3DEA1EB3BB2900442E03 /* ViewController.swift */,
 				83514CCD1EB5FA1D00825ED3 /* PhonNumberViewController.swift */,
 				83514CCF1EB5FA4000825ED3 /* ActivationCodeViewController.swift */,
-				83514CD31EB64D0400825ED3 /* ContactsViewController.swift */,
-				83514CD11EB6118600825ED3 /* ProfileViewController.swift */,
+				83514CD31EB64D0400825ED3 /* ContactsListViewController.swift */,
 				832CCEFC1EB6B0BC00B17F01 /* Support */,
 			);
 			path = TestApp;
@@ -241,10 +238,9 @@
 			files = (
 				83514CCE1EB5FA1D00825ED3 /* PhonNumberViewController.swift in Sources */,
 				83514CD01EB5FA4000825ED3 /* ActivationCodeViewController.swift in Sources */,
-				83514CD21EB6118600825ED3 /* ProfileViewController.swift in Sources */,
 				83EA3DEB1EB3BB2900442E03 /* ViewController.swift in Sources */,
 				83EA3DE91EB3BB2900442E03 /* AppDelegate.swift in Sources */,
-				83514CD41EB64D0400825ED3 /* ContactsViewController.swift in Sources */,
+				83514CD41EB64D0400825ED3 /* ContactsListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

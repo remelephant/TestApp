@@ -11,8 +11,8 @@ import Alamofire
 
 class PhonNumberViewController: UIViewController {
 
-//    var phoneNumber: String = ""
-    var facebookID: String = ""
+    var firstName: String!
+    var facebookID: String!
     var myTextField: UITextField = UITextField()
     let validNumbers = ["91","99", "96", "43", "55", "95", "41", "44", "93", "94", "77", "98", "49"]
     let localCode = "+374"
@@ -55,11 +55,6 @@ class PhonNumberViewController: UIViewController {
         self.view.addSubview(verifyButton)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func sendPhoneNumber(sender: UIButton!) {
         let phoneNumber = myTextField.text
         let valid = isNumberValid(number: phoneNumber!)
@@ -81,6 +76,7 @@ class PhonNumberViewController: UIViewController {
     }
 
     func requestVerificationCode(fbID: String, phoneNumber: String) {
+        DispatchQueue.global(qos: .background).async {
         let parameters: Parameters = [
             "userId": fbID,
             "phoneNumber": phoneNumber,
@@ -92,9 +88,13 @@ class PhonNumberViewController: UIViewController {
                 if response.result.value != nil {
                     let viewController = ActivationCodeViewController()
                     viewController.facebookID = self.facebookID
-                    self.present(viewController, animated: true, completion: nil)
+                    viewController.firstName = self.firstName
+                    DispatchQueue.main.async {
+                        self.present(viewController, animated: true, completion: nil)
+                    }
                 }
         }
+        } //Global queue
     }
 
 
