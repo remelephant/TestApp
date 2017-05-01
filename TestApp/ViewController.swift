@@ -46,7 +46,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func logInAsExistingUser() {
         print("Loged in with existing account")
-        let viewController = ContactsListViewController()
+        let viewController = FinalViewController()
         self.present(viewController, animated: true, completion: nil)
     }
     

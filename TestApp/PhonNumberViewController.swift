@@ -36,7 +36,7 @@ class PhonNumberViewController: UIViewController {
     
     func createPhoneNumberTextfield() {
         myTextField = UITextField(frame: CGRect(x: 40, y: 100, width: view.frame.width - 80, height: 50));
-        myTextField.placeholder = "Add Verification Code"
+        myTextField.placeholder = "Add phone number"
         myTextField.backgroundColor = UIColor.white
         myTextField.textColor = UIColor.blue
         myTextField.keyboardType = UIKeyboardType.numberPad

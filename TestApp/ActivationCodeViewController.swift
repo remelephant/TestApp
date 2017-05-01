@@ -37,7 +37,7 @@ class ActivationCodeViewController: UIViewController {
     
     func verificationCodeTextfield() {
         textField = UITextField(frame: CGRect(x: 40, y: 100, width: view.frame.width - 80, height: 50));
-        textField.placeholder = "Add phone Number"
+        textField.placeholder = "Add activation code"
         textField.backgroundColor = UIColor.white
         textField.textColor = UIColor.blue
         textField.keyboardType = UIKeyboardType.numberPad
@@ -52,8 +52,8 @@ class ActivationCodeViewController: UIViewController {
     func sendVerificationCodetoBE() {
         DispatchQueue.global(qos: .background).async {
         let parameters: Parameters = [
-            "userId": facebookID,
-            "code": textField.text!,
+            "userId": self.facebookID,
+            "code": self.textField.text!,
             ]
         
         Alamofire.request("http://sample-env-2.w6em3jmvdb.us-west-2.elasticbeanstalk.com/user/verify", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
@@ -74,7 +74,7 @@ class ActivationCodeViewController: UIViewController {
                         //popup
                     }
                     // for example only (must b moved to line 73)
-                    let viewController = ContactsListViewController()
+                    let viewController = FinalViewController()
                     viewController.firstName = self.firstName
                     DispatchQueue.main.async {
                     self.present(viewController, animated: true, completion: nil)
