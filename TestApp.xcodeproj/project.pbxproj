@@ -12,6 +12,7 @@
 		83514CCE1EB5FA1D00825ED3 /* PhonNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83514CCD1EB5FA1D00825ED3 /* PhonNumberViewController.swift */; };
 		83514CD01EB5FA4000825ED3 /* ActivationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83514CCF1EB5FA4000825ED3 /* ActivationCodeViewController.swift */; };
 		835CBD691EB6DEC800AA17E1 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CBD681EB6DEC800AA17E1 /* FinalViewController.swift */; };
+		835CBD6D1EB780E500AA17E1 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CBD6C1EB780E500AA17E1 /* Server.swift */; };
 		83EA3DE91EB3BB2900442E03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA3DE81EB3BB2900442E03 /* AppDelegate.swift */; };
 		83EA3DEB1EB3BB2900442E03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA3DEA1EB3BB2900442E03 /* ViewController.swift */; };
 		83EA3DEE1EB3BB2900442E03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EA3DEC1EB3BB2900442E03 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		83514CCD1EB5FA1D00825ED3 /* PhonNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonNumberViewController.swift; sourceTree = "<group>"; };
 		83514CCF1EB5FA4000825ED3 /* ActivationCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivationCodeViewController.swift; sourceTree = "<group>"; };
 		835CBD681EB6DEC800AA17E1 /* FinalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
+		835CBD6C1EB780E500AA17E1 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		83864BDD1EB3C481002C1282 /* TestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestApp.entitlements; sourceTree = "<group>"; };
 		83EA3DE51EB3BB2900442E03 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EA3DE81EB3BB2900442E03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +56,25 @@
 				7666BA8119F9DE9F2A2B4A5E /* Pods-TestApp.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8320AD091EB88E61002C5F65 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				835CBD6C1EB780E500AA17E1 /* Server.swift */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
+		8320AD0A1EB88E75002C5F65 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				83EA3DEA1EB3BB2900442E03 /* ViewController.swift */,
+				83514CCD1EB5FA1D00825ED3 /* PhonNumberViewController.swift */,
+				83514CCF1EB5FA4000825ED3 /* ActivationCodeViewController.swift */,
+				835CBD681EB6DEC800AA17E1 /* FinalViewController.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		832CCEFC1EB6B0BC00B17F01 /* Support */ = {
@@ -90,10 +111,8 @@
 		83EA3DE71EB3BB2900442E03 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
-				83EA3DEA1EB3BB2900442E03 /* ViewController.swift */,
-				83514CCD1EB5FA1D00825ED3 /* PhonNumberViewController.swift */,
-				83514CCF1EB5FA4000825ED3 /* ActivationCodeViewController.swift */,
-				835CBD681EB6DEC800AA17E1 /* FinalViewController.swift */,
+				8320AD0A1EB88E75002C5F65 /* View */,
+				8320AD091EB88E61002C5F65 /* Server */,
 				832CCEFC1EB6B0BC00B17F01 /* Support */,
 			);
 			path = TestApp;
@@ -240,6 +259,7 @@
 				83514CCE1EB5FA1D00825ED3 /* PhonNumberViewController.swift in Sources */,
 				83514CD01EB5FA4000825ED3 /* ActivationCodeViewController.swift in Sources */,
 				83EA3DEB1EB3BB2900442E03 /* ViewController.swift in Sources */,
+				835CBD6D1EB780E500AA17E1 /* Server.swift in Sources */,
 				83EA3DE91EB3BB2900442E03 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,11 +11,10 @@ import Alamofire
 
 class PhonNumberViewController: UIViewController {
 
-    var firstName: String!
-    var facebookID: String!
     var myTextField: UITextField = UITextField()
     let validNumbers = ["91","99", "96", "43", "55", "95", "41", "44", "93", "94", "77", "98", "49"]
     let localCode = "+374"
+    var server = Server()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +59,10 @@ class PhonNumberViewController: UIViewController {
         let valid = isNumberValid(number: phoneNumber!)
         if valid {
             let fullNumber = "\(localCode)\(phoneNumber!)"
-            requestVerificationCode(fbID: facebookID, phoneNumber: fullNumber)
+            server.setPhoneNumber(number: fullNumber)
+            server.requestVerificationCode()
+            let viewController = ActivationCodeViewController()
+            self.present(viewController, animated: true, completion: nil)
         } else {
             //Popup or button is not active
             print("The number is not vaild")
@@ -75,27 +77,7 @@ class PhonNumberViewController: UIViewController {
         return true
     }
 
-    func requestVerificationCode(fbID: String, phoneNumber: String) {
-        DispatchQueue.global(qos: .background).async {
-        let parameters: Parameters = [
-            "userId": fbID,
-            "phoneNumber": phoneNumber,
-            ]
-        
-        Alamofire.request("http://sample-env-2.w6em3jmvdb.us-west-2.elasticbeanstalk.com/user/sendcode", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
-            .responseJSON {response in debugPrint(response)
-                
-                if response.result.value != nil {
-                    let viewController = ActivationCodeViewController()
-                    viewController.facebookID = self.facebookID
-                    viewController.firstName = self.firstName
-                    DispatchQueue.main.async {
-                        self.present(viewController, animated: true, completion: nil)
-                    }
-                }
-        }
-        } //Global queue
-    }
+    
 
 
 }
