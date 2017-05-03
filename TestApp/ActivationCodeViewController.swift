@@ -17,8 +17,8 @@ class ActivationCodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-//        createVerifyButton()
-//        verificationCodeTextfield()
+        createVerifyButton()
+        verificationCodeTextfield()
     }
     
     func createVerifyButton() {
@@ -42,7 +42,11 @@ class ActivationCodeViewController: UIViewController {
     }
     
     func verifyCode(sender: UIButton!) {
-//        server.phoneNumber = textField.text
-//        server.sendVerificationCodetoBE()
+        if textField.text != nil {
+            server.setPhoneNumber(number: textField.text!)
+            server.sendVerificationCodetoBE()
+        } else {
+            print("Error in verifyCode() fucntion")
+        }
     }
 }
